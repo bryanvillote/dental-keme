@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+      {%load static%}
+      <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard_index.css'%}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/patient_record_search.css'%}">
+
+
+  <title>Search Patient</title>
+</head>
+<body>
+
+  <div class="navbar-lagayan" id="dashboard_index">
+    <div class="navbar">
+        <div class="navbar-logo">
+            <img src= "/static/images/dental_logo.png" width="128" height="128">
+        </div>
+
+        <div class="navbar-buttons1">
+            <!-- display flex, para madefine mo na pa column ung gusto mong allignment -->
+            <a href="{% url 'dashboard_choice'%}"><button>CREATE</button></a>
+        </div>
+        <div class="navbar-buttons2">
+            <a href="{% url 'dashboard_choice'%}"><button>UPDATE</button></a>
+        </div>
+        <div class="navbar-buttons3">
+            <a href="{% url 'dashboard_choice'%}"><button>VIEW</button></a>
+        </div>
+
+    </div>
+  </div>
+<div class="form-lagayan" id="patient_record_search">
+  <div class="container">
+    <h1>Search Patient</h1>
+    <form method="POST" action="{% url 'patient_record_search' %}">
+      {% csrf_token %}
+      <div class="column">
+        <div class="textbox">
+          <input type="text" name="last_name" placeholder="FULLNAME">
+        </div>
+        <div class="searchbutton">
+          <button type="submit">LOCATE</button>
+        </div>
+      </div>
+    </form>
+    <div class="formbutton1">
+      <a href="{% url 'patient_record_create' %}"><button>NEW PATIENT RECORD</button></a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+      {%load static%}
+      <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard_index.css'%}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/app_sched_search.css'%}">
+
+
+  <title>Update Patient</title>
+</head>
+<body>
+  
+  <div class="navbar-lagayan" id="dashboard_index">
+    <div class="navbar">
+        <div class="navbar-logo">
+            <img src= "/static/images/dental_logo.png" width="128" height="128">
+        </div>
+
+        <div class="navbar-buttons1">
+            <!-- display flex, para madefine mo na pa column ung gusto mong allignment -->
+            <a href="{% url 'dashboard_choice'%}"><button>CREATE</button></a>
+        </div>
+        <div class="navbar-buttons2">
+            <a href="{% url 'dashboard_choice'%}"><button>UPDATE</button></a>
+        </div>
+        <div class="navbar-buttons3">
+            <a href="{% url 'dashboard_choice'%}"><button>VIEW</button></a>
+        </div>
+
+    </div>
+  </div>
+<div class="form-lagayan" id="patient_record_search">
+  <div class="container">
+    <h1>Search Patient</h1>
+      <form method="GET">
+        <form method="GET">
+          <div class="textbox">
+            <input type="text" name="first_name" placeholder="FULLNAME">
+            <!--{{ form.first_name }}-->
+            <!--{{ form.last_name }}-->
+        <!--{{ form.as_p }}-->
+
+        <div class="searchbutton">
+          <button type="submit">LOCATE</button>
+        </div>
+      </form>
+
+      {% if appointment_schedules %}
+          <h2>Appointment Schedules:</h2>
+          <ul>
+              <table>
+                  <thead>
+                    <tr>
+                      <th>Last Appointment</th>
+                      <th>Current Appointment Schedule</th>
+                      <th>Appointment Time</th>
+                      <th>Procedure</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {% for appointment in appointment_schedules %}
+                      <tr>
+                        <td>{{ appointment.last_appointment }}</td>
+                        <td>{{ appointment.current_appointment_schedule }}</td>
+                        <td>{{ appointment.appointment_time }}</td>
+                        <td>{{ appointment.procedure }}</td>
+                        <td>{{ appointment.status }}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+          </ul>
+      {% else %}
+          <p>No appointment schedules found.</p>
+      {% endif %}
+  </div>
+</div>
+</body>
+</html>

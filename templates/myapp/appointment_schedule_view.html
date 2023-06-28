@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {%load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard_index.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app_sched_view.css'%}">
+
+</head>
+<body>
+    <div class="navbar-lagayan" id="design">
+        <div class="navbar">
+            <div class="navbar-logo">
+                <img src= "/static/images/dental_logo.png" width="128" height="128">
+			</div>
+			
+            <div class="navbar-buttons1">
+			<!-- display flex, para madefine mo na pa column ung gusto mong allignment -->
+            <a href="{% url 'dashboard_choice'%}"><button>CREATE</button></a>
+            </div>
+            <div class="navbar-buttons2">
+                <a href="{% url 'dashboard_choice'%}"><button>UPDATE</button></a>
+            </div>
+            <div class="navbar-buttons3">
+                <a href="{% url 'dashboard_choice'%}"><button>VIEW</button></a>
+            </div>
+
+        </div>
+        </div>
+
+    <div class="form-lagayan" id="app_sched_view">
+        <div class="container">        
+            <h1>APPOINTMENT SCHEDULE</h1>
+
+            <ul>
+                {% for appointment_schedule in appointment_schedules %}
+                <li><a href="{% url 'appointment_schedule_detail' pk=appointment_schedule.pk %}">{{ appointment_schedule.patient_id }}</a></li>
+                {% endfor %}
+            </ul>
+            <div class="create_button">
+                <a href="{% url 'appointment_schedule_create' %}"><button>NEW APPOINTMENT SCHEDULE</button></a>
+            </div>
+        </div>  
+    </div>
+</body>
+</html>          
