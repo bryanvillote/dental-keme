@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    {%load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard_index.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pat_rec_ud.css'%}">
+
+    <title>Update Form</title>
+</head>
+<body>
+    <div class="navbar-lagayan" id="dashboard_index">
+        <div class="navbar">
+            <div class="navbar-logo">
+                <img src= "/static/images/dental_logo.png" width="128" height="128">
+			</div>
+			
+            <div class="navbar-buttons1">
+			<!-- display flex, para madefine mo na pa column ung gusto mong allignment -->
+                <button onclick="gotoCreate()">CREATE</button>
+            </div>
+            <div class="navbar-buttons2">
+                <button onclick="gotoUpdate()">UPDATE</button>
+            </div>
+            <div class="navbar-buttons3">
+                <button onclick="gotoView()">VIEW</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="form-lagayan" id = "pat_rec_form>
+        <div class="container">
+            <form method="POST">
+            {% csrf_token %}
+            <div class="text">
+                <h1>Update Patient Record</h1>
+            </div>
+            {{ form.as_p }}
+            <div class="submit-button">
+                <button type="submit">UPDATE</button>
+            </div>
+            </form>
+        </div>    
+    </div>        
+</body>
+</html>
